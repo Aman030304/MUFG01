@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  streamlit:
+    build: .
+    container_name: manufacturing-streamlit
+    ports:
+      - "8501:8501"
+    environment:
+      - STREAMLIT_SERVER_HEADLESS=true
+      - STREAMLIT_SERVER_ADDRESS=0.0.0.0
+      - STREAMLIT_SERVER_PORT=8501
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+    restart: unless-stopped
+
+
